@@ -7,7 +7,7 @@
     <h1>Grupos de Chat</h1>
     <ul>
         {% for grupo in grupos_usuario %}
-            <li>{{ grupo.grupo.name }} - {{ grupo.rol }}</li>
+            <li><a href="{% url 'group' pk=grupo.grupo.pk%}">{{ grupo.grupo.name }}</a> - {{ grupo.rol }}</li>
         {% endfor %}
     </ul>
     <a href="{% url 'createGroup' %}">Crear Grupo</a>

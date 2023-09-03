@@ -19,4 +19,13 @@ class PertenenciaGrupo(models.Model):
     rol = models.CharField(max_length=10, choices=ROL_CHOICES, default='Member')
 
     def __str__(self):
-        return self.grupo.name + " - " + self.usuario.nickname + " - " + self.rol
+        return f"{self.usuario.__str__() } Rol:{self.rol}  Grupo:{self.grupo.__str__()}"
+    
+class Mensaje(models.Model):
+    grupo = models.ForeignKey(ChatGroup, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    mensaje = models.TextField()
+    fechaCreacion = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Mensaje de {self.usuario.first_name} en {self.grupo.__str__}"

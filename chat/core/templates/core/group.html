@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Detalles del Grupo: {{ grupo.name }}</h1>
+    <h2>Miembros:  {{cantidad_miembros}}</h2>
+    <ul>
+        {% for miembro in miembros %}
+            <li>{{ miembro.usuario.first_name}} - {{ miembro.rol }}</li>
+        {% endfor %}
+    </ul>
+    <h3><a href="{% url 'addMember' pk=group.pk %}">Añadir Personas</a></h3>
+</body>
+</html>
